@@ -5,16 +5,19 @@
 }
 
 body{
-    background-color: bisque;
+    background-color: rgb(138, 12, 12);
+    display: block;
 }
 
 header{
-    background-color: rgb(255, 154, 59);
+    background-color:rgba(0, 0, 0, 0.3);
+    width: 100vw;
     display: flex;
     height: 14vh;
     align-items: center;
     justify-content: space-around;
     overflow: hidden;
+    position: relative;
 }
 
 .logo-container{
@@ -65,9 +68,9 @@ header{
     flex: 1;
     border: none;
     outline: none;
-    padding: 0px 20px;
+    padding: 0% 12vw;
     border-radius: 50px;
-    font-size: 20px;
+    font-size: 2vw;
     font-family: serif, monospace;
 
 }
