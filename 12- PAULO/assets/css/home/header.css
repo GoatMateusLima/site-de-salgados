@@ -22,9 +22,9 @@ header{
 
 .logo-container{
     position: relative;
-    width: 16%;
+    width: min(20vw, 140px);
     height: auto;
-    transform: translate(-56%, 2%);
+    transform: translate(-20%, 0);
     
 
 
@@ -34,7 +34,7 @@ header{
 
 .fundo{
     position: absolute;
-    top: 32%;
+    top: 36%;
     left: 15%;
     width: 60%;
     height: 27%;
@@ -45,9 +45,9 @@ header{
 
 .logo-img{
     position: relative;
-    transform: translateY(-3%);
+    transform: translateY(0);
     width: 90%;
-    height: 100%;
+    height: auto;
     z-index: 2;
    
 
@@ -56,30 +56,31 @@ header{
 .container-pesquisa{
     display: flex;
     justify-content: center;
-    transform: translate(-30%);
-    width: 50%;
-    height: 50%;
+    transform: translate(-20%);
+    width: min(60vw, 600px);
+    height: 3rem;
     position: relative;
+    border-radius: 50px;
+    background-color: white;
     overflow: hidden;
-
 }
 
 .input-pesquisa{
     flex: 1;
     border: none;
     outline: none;
-    padding: 0% 12vw;
+    padding: 0 2rem;
     border-radius: 50px;
-    font-size: 2vw;
+    font-size: 1rem;
     font-family: serif, monospace;
 
 }
 
 .botao-pesquisa{
     position: absolute;
-    top: 0%;
-    right: 0%;
-    width: 6%;
+    top: 0;
+    right: 0;
+    width: 3rem;
     height: 100%;
     background-color: transparent;
     border: none;
