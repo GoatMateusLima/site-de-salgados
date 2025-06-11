@@ -1,7 +1,9 @@
 main{
    width: 100vw;
-   height: 100vh;
+   height: auto;
    background-color: bisque;
+   position: relative;
+   z-index: 1;
 }
 
 .banner-container{
@@ -36,40 +38,4 @@ main{
 }
 
 
-/* Ver salgados*/
-
-.container-btn{
-    display: flex;
-    flex-direction: column;
-    position: relative;  
-    justify-content: center;
-    align-items: center;
-    top: 14vh;
-}
-
-.btn-vss{
-    display: flex;
-    position: absolute;
-    background-color: rgb(138, 12, 12);
-    color: white;
-    z-index: 2;
-    width: 50vw;
-    height: 10vh;
-    justify-content: center;
-    align-items: center;
-    border-radius: 14em;
-    
-}
-
-.btn-vss a{
-    text-decoration: none;
-    color: white;
-}
-
-
-.hr-btn{
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    border: 1vh solid rgb(43, 42, 42) ;
-}
+/* Container salgados*/
