@@ -1,0 +1,116 @@
+main{
+   width: 100vw;
+   height: auto;
+   background-color: bisque;
+   position: relative;
+   z-index: 1;
+}
+
+.banner-container{
+    width: 100vw;
+    height: 30vh;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.img-banner{
+    display: flex;
+    position: absolute;
+    white-space: nowrap;
+    
+}
+
+.img-banner img{
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.camada-transparente{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%)  rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(255,255,255,1) 100%; 
+    pointer-events: none;
+}
+
+
+/* Container salgados*/
+
+.categorias-container{
+    background-color: rgb(97, 6, 6);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    
+    
+}
+
+.categoria{
+    margin: 1rem;
+    background-color:rgb(138, 12, 12);
+    width: 120px;
+    height: 120px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.categoria:hover{
+    transform: scale(1.1);
+}
+
+.categoria img{
+    width: 80px;
+    height: 80px;
+}
+
+.produtos-carrossel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.produtos-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 3rem;
+    transition: transform 0.3s ease;
+
+}
+
+.produto-card{
+    min-width: 200px;
+    height: 300px;
+    background-color:rgb(138, 12, 12);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+
+}
+
+.produto-card img{
+    width: 200px;
+    height: 200px;
+}
+
+@media (max-width: 999px) {
+    .produtos-container{
+        grid-template-columns: 1fr ;
+    }
+}
