@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Salgados Bonate</title>
-    <link rel="shortcut icon" href="assets/img/home/logo/bonate.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/home/header.css">
-    <link rel="stylesheet" href="assets/css/home/main.css">
-  
-    
-    
+    <link rel="shortcut icon" href="assets/img/home/logo/bonate.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/home/header.css" />
+    <link rel="stylesheet" href="assets/css/home/main.css" />
 </head>
+
 <body>
     <header class="header">
         <h1>BONATE</h1>
@@ -19,70 +18,92 @@
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
-
             </div>
             <ul class="nav-list">
                 <li><a href="index.html" class="link">Inicio</a></li>
-                <hr>
+                <hr />
                 <li><a href="Quemsomos.html" class="link">Salgados</a></li>
-                <hr >
+                <hr />
                 <li><a href="/" class="link">Localização</a></li>
-                <hr>
+                <hr />
                 <li><a href="/" class="link">Sobre</a></li>
             </ul>
         </nav>
         <form class="container-pesquisa">
-            <input type ="text" placeholder="Pesquisar" class="input-pesquisa" name="Pesquisar" >
+            <input type="text" id="input-pesquisa" placeholder="Pesquisar" class="input-pesquisa" name="Pesquisar" />
             <button class="botao-pesquisa">
-                <img src="assets/img/home/icones/lupa.png" alt="Pesquisar">
+                <img src="assets/img/home/icones/lupa.png" alt="Pesquisar" />
             </button>
         </form>
     </header>
     <main>
         <div class="banner-container" id="efeito-carrossel">
             <div class="img-banner" id="img-carrossel">
-                <img src="assets/img/home/img-banner/banner1.png" alt="promocao">
-                <img src="assets/img/home/img-banner/banner2.png" alt="promocao">
-                <img src="assets/img/home/img-banner/banner3.png" alt="para onde o dinheiro vai">
-                <img src="assets/img/home/img-banner/banner4.png" alt="somos grandes">
-                <img src="assets/img/home/img-banner/banner5.png" alt="estamos em todo lugar">
+                <img src="assets/img/home/img-banner/banner1.png" alt="promocao" />
+                <img src="assets/img/home/img-banner/banner2.png" alt="promocao" />
+                <img src="assets/img/home/img-banner/banner3.png" alt="para onde o dinheiro vai" />
+                <img src="assets/img/home/img-banner/banner4.png" alt="somos grandes" />
+                <img src="assets/img/home/img-banner/banner5.png" alt="estamos em todo lugar" />
 
-                <img src="assets/img/home/img-banner/banner1.png" alt="promocao">
-                <img src="assets/img/home/img-banner/banner2.png" alt="promocao">
-                <img src="assets/img/home/img-banner/banner3.png" alt="para onde o dinheiro vai">
-                <img src="assets/img/home/img-banner/banner4.png" alt="somos grandes">
-                <img src="assets/img/home/img-banner/banner5.png" alt="estamos em todo lugar">
+                <img src="assets/img/home/img-banner/banner1.png" alt="promocao" />
+                <img src="assets/img/home/img-banner/banner2.png" alt="promocao" />
+                <img src="assets/img/home/img-banner/banner3.png" alt="para onde o dinheiro vai" />
+                <img src="assets/img/home/img-banner/banner4.png" alt="somos grandes" />
+                <img src="assets/img/home/img-banner/banner5.png" alt="estamos em todo lugar" />
             </div>
             <div class="camada-transparente"></div>
         </div>
-        
+
         <section class="categorias-container">
             <div class="categoria" data-type="salgados">
-                <img src="assets/img/home/icones/coxinha.png" alt="salgados">
+                <img src="assets/img/home/icones/coxinha.png" alt="salgados" />
                 <p>Salgados</p>
             </div>
             <div class="categoria" data-type="bebidas">
-                <img src="assets/img/home/icones/refrigerantes.png" alt="salgados">
+                <img src="assets/img/home/icones/refrigerantes.png" alt="salgados" />
                 <p>Bebidas</p>
             </div>
         </section>
         <section class="produtos-carrossel">
-            <div id="produtos-container" class="produtos-container">
-                
-
-            </div>
+            <div id="produtos-container" class="produtos-container"></div>
         </section>
-        
+        <div id="modal-produto" class="modal hidden">
+            <div class="modal-conteudo">
+                <div id="modal-fechar" class="modal-fechar">×</div> <!-- Botão X para fechar -->
+                <div class="modal-img">
+                    <img id="modal-img" src="" alt="" />
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-nome" class="titulo"></h2>
+                    <div class="caixa-descricao">
+                        <p id="modal-desc"></p>
+                    </div>
+                    <p id="modal-preco" class="modal-preco"></p>
+                    <label class="label-modal">Quantidade:
+                        <input type="number" id="modal-qtd" value="1" min="1" class="input-modal" />
+                    </label>
+                    <div class="modal-botoes">
+                        <button id="modal-add-carrinho" class="modal-add-carrinho">
+                            Ir para Carrinho
+                            <img src="assets/img/home/icones/mais.png" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <p>Contato</p>
-        <hr>
-        <p>Codigo desenvolvido por Mateus <br> Design criado por agatha</p>
-        
+        <hr />
+        <p>
+            Codigo desenvolvido por Mateus <br />
+            Design criado por agatha
+        </p>
     </footer>
     <script src="assets/js/home/carrossel.js"></script>
     <script src="assets/js/home/menu-navbar.js"></script>
     <script src="assets/js/home/produtos.js"></script>
     
 </body>
+
 </html>

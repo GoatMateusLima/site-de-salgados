@@ -1,11 +1,12 @@
 [
-  {
-    "id": 1,
-    "nome": "Coca-Cola",
-    "preco": 5.99,
-    "categoria": "bebidas",
-    "imagem": "assets/img/img-salgados/a.jpg"
-  },
+{
+  "id": 1,
+  "nome": "Coxinha de Frango",
+  "preco": 5.660,
+  "categoria": "salgados",
+  "imagem": "assets/img/img-salgados/a.jpg",
+  "descricao": "Coxinha artesanal com frango temperado e massa crocanteaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa."
+},
   {
     "id": 2,
     "nome": "Guaraná",
