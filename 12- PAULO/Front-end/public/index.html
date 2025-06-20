@@ -22,11 +22,11 @@
             <ul class="nav-list">
                 <li><a href="index.html" class="link">Inicio</a></li>
                 <hr />
-                <li><a href="Quemsomos.html" class="link">Salgados</a></li>
-                <hr />
                 <li><a href="/" class="link">Localização</a></li>
                 <hr />
                 <li><a href="/" class="link">Sobre</a></li>
+                <hr />
+                <li><a href="http://localhost:5000/carrinho">Ir para o Carrinho</a></li>
             </ul>
         </nav>
         <form class="container-pesquisa">
@@ -35,6 +35,9 @@
                 <img src="assets/img/home/icones/lupa.png" alt="Pesquisar" />
             </button>
         </form>
+        <div class="container-carrinho">
+            <a href="/12- PAULO/Flask/"><img src="" alt=""></a>
+        </div>
     </header>
     <main>
         <div class="banner-container" id="efeito-carrossel">
@@ -80,7 +83,7 @@
                     </div>
                     <p id="modal-preco" class="modal-preco"></p>
                     <label class="label-modal">Quantidade:
-                        <input type="number" id="modal-qtd" value="1" min="1" class="input-modal" />
+                        <input type="number" id="modal-qtd" value="1" min="1" max="1000" class="input-modal" />
                     </label>
                     <div class="modal-botoes">
                         <button id="modal-add-carrinho" class="modal-add-carrinho">
@@ -98,6 +101,7 @@
         <p>
             Codigo desenvolvido por Mateus <br />
             Design criado por agatha
+            
         </p>
     </footer>
     <script src="assets/js/home/carrossel.js"></script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carrinho.css') }}" />
+</head>
+<body>
+    <header class="header">
+        <h1>BONATE</h1>
+    </header>
+    <main>
+        <div id="carrinho-container">
+            {% if produtos %}
+                {% for produto in produtos %}
+                    <div class="produto" id="produto-{{ produto.id }}" data-id="{{ produto.id }}">
+                        <span><strong>{{ produto.nome }}</strong> <br> x{{ produto.quantidade }}</span>
+                        <span>R$ {{ "%.2f"|format(produto.preco * produto.quantidade) }}</span>
+                        <button
+                            class="btn-remover"
+                            onclick="confirmarRemocao(event, '{{ produto.id }}')"
+                        >
+                            🗑 Remover
+                        </button>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Carrinho vazio.</p>
+            {% endif %}
+        </div>
+
+        <div id="total">
+            Total: R$ {{ "%.2f"|format(total) }}
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/remover.js') }}"></script>
+</body>
+</html>
