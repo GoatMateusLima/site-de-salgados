@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salgados Bonate</title>
+    <link rel="shortcut icon" href="/img/home/logo/bonate.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/home/header.css" />
+    <link rel="stylesheet" href="assets/css/home/main.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1>BONATE</h1>
+        <nav class="nav-links">
+            <div class="menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html" class="link">Inicio</a></li>
+                <hr />
+                <li><a href="sobre.html#quem-somos" class="link">Equipe BONATE</a></li>
+                <hr />
+                <li><a href="sobre.html" class="link">Sobre</a></li>
+            </ul>
+        </nav>
+
+        </div>
+        
+        <form class="container-pesquisa">
+            <input type="text" id="input-pesquisa" placeholder="Pesquisar" class="input-pesquisa" name="Pesquisar" autocomplete="off" />
+            <button class="botao-pesquisa">
+                <img src="/img/home/icones/lupa.png" alt="Pesquisar" />
+            </button>
+        </form>
+        <div class="div-btns">
+            <button class="container-carrinho" id="btn-carrinho">
+                <img src="/img/home/icones/carrinho-carrinho.png" alt="">
+            </button>
+            <button class="container-perfil" id="btn-perfil">
+                <img src="/img/home/icones/user.png" alt="">
+            </button>
+
+            <!-- Card de Perfil -->
+            <div class="card" style="display: none;" id="conatiner-perfil">
+                <div class="conatiner-fechar-perfil">
+                    <div class="img-perfil">
+                       <img src="/img/home/icones/user.png" alt="">
+                    </div>
+                    <div class="fechar" id="btn-fechar-perfil">
+                        <img src="/img/home/icones/botao-x.png" alt="">
+                    </div>
+                </div>
+
+                <ul class="list">
+                    <li class="element" id="btn-dados-pessoais">
+                        <img src="/img/home/icones/dados-pessoais.png" alt="">
+                        <p class="label">Dados</p>
+                    </li>
+                    <li class="element" id="btn-carrinhoo">
+                        <img src="/img/home/icones/vista-lateral-vazia-do-carrinho-de-compras.png" alt=""
+                            class="lucide lucide-settings">
+                        <p class="label">Carrinho</p>
+                    </li>
+                </ul>
+
+                <div class="separator"></div>
+
+                <ul class="list">
+                    <li class="element delete" id="btn-excluir-conta">
+                        <svg class="lucide lucide-trash-2" stroke-linejoin="round" stroke-linecap="round"
+                            stroke-width="2" stroke="#7e8590" fill="none" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                            <line y2="17" y1="11" x2="10" x1="10"></line>
+                            <line y2="17" y1="11" x2="14" x1="14"></line>
+                        </svg>
+                        <p class="label">Delete</p>
+                    </li>
+                </ul>
+
+                <div class="separator"></div>
+
+                <ul class="list">
+                    <li class="element" id="btn-sair">
+                        <img src="" alt="">
+                        <p class="label">Sair</p>
+                    </li>
+                </ul>
+                <ul class="list-2">
+                    <li class="element-2" id="btn-login-cadastro" style="display: none;" >
+                        <p class="label-2">Login / Cadastro</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <div class="banner-container" id="efeito-carrossel">
+            <div class="img-banner" id="img-carrossel">
+                <img src="/img/home/img-banner/banner1.png" alt="promocao" />
+                <img src="/img/home/img-banner/banner2.png" alt="promocao" />
+                <img src="/img/home/img-banner/banner3.png" alt="para onde o dinheiro vai" />
+                <img src="/img/home/img-banner/banner4.png" alt="somos grandes" />
+                <img src="/img/home/img-banner/banner5.png" alt="estamos em todo lugar" />
+
+                <img src="/img/home/img-banner/banner1.png" alt="promocao" />
+                <img src="/img/home/img-banner/banner2.png" alt="promocao" />
+                <img src="/img/home/img-banner/banner3.png" alt="para onde o dinheiro vai" />
+                <img src="/img/home/img-banner/banner4.png" alt="somos grandes" />
+                <img src="/img/home/img-banner/banner5.png" alt="estamos em todo lugar" />
+            </div>
+            <div class="camada-transparente"></div>
+        </div>
+
+        <section class="categorias-container">
+            <div class="categoria" data-type="salgados">
+                <img src="/img/home/icones/coxinha.png" alt="salgados" />
+                <p>Salgados</p>
+            </div>
+            <div class="categoria" data-type="bebidas">
+                <img src="/img/home/icones/refrigerantes.png" alt="salgados" />
+                <p>Bebidas</p>
+            </div>
+        </section>
+        <section class="produtos-carrossel">
+            <div id="produtos-container" class="produtos-container"></div>
+        </section>
+        <div id="modal-produto" class="modal hidden">
+            <div class="modal-conteudo">
+                <div id="modal-fechar" class="modal-fechar">×</div> <!-- Botão X para fechar -->
+                <div class="modal-img">
+                    <img id="modal-img" src="" alt="" />
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-nome" class="titulo"></h2>
+                    <div class="caixa-descricao">
+                        <p id="modal-desc"></p>
+                    </div>
+                    <p id="modal-preco" class="modal-preco"></p>
+                    <label class="label-modal">Quantidade:
+                        <div class="quantidade-control">
+                            <button type="button" id="modal-qtd-decrement" class="btn-qtd">−</button>
+                            <input type="number" id="modal-qtd" value="1" min="1" max="60" class="input-modal" />
+                            <button type="button" id="modal-qtd-increment" class="btn-qtd">+</button>
+                        </div>
+                    </label>
+                    <div class="modal-botoes">
+                        <button id="modal-add-carrinho" class="modal-add-carrinho">
+                            Ir para Carrinho
+                            <img src="/img/home/icones/mais.png" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Contato</p>
+        <hr />
+        <p>
+            Codigo desenvolvido por Mateus <br />
+            Design criado por agatha
+
+        </p>
+    </footer>
+    <script src="assets/js/home/carrossel.js"></script>
+    <script src="assets/js/home/menu-navbar.js"></script>
+    <script src="assets/js/home/produtos.js"></script>
+    <script src="assets/js/home/btn.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+    <div class="form-container">
+  <input checked type="checkbox" id="switch" />
+
+  <!-- CADASTRO -->
+  <div class="sign-up-container">
+    <span class="form-title">Sign Up</span>
+    <form class="sign-up-form">
+      <label for="nome-cadastro">Nome</label>
+      <input class="input" placeholder="João da Silva" id="nome-cadastro" type="text" />
+
+      <label for="email-cadastro">Email</label>
+      <input class="input" placeholder="exemplo@email.com" id="email-cadastro" type="email" />
+
+      <label for="senha-cadastro">Senha</label>
+      <input class="input" placeholder="••••••••" id="senha-cadastro" type="password" />
+
+      <label for="switch" class="switch-label">Já tem uma conta?</label>
+
+      <button id="btn-cadastrar">Cadastrar</button>
+    </form>
+  </div>
+
+  <!-- LOGIN -->
+  <div class="log-in-container">
+    <span class="form-title">Login</span>
+    <form class="log-in-form">
+      <label for="email-login">Email</label>
+      <input class="input" placeholder="exemplo@email.com" id="email-login" type="email" />
+
+      <label for="senha-login">Senha</label>
+      <input class="input" placeholder="••••••••" id="senha-login" type="password" />
+
+      <a class="forgot-pwd">Esqueceu a senha?</a>
+      <label for="switch" class="switch-label">Não tem uma conta?</label>
+
+      <button id="btn-login">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- Mensagem -->
+<p id="mensagem"></p>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,427 @@
+/* Seu CSS original */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #790000;
+    height: 100vh;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    display: flex;
+    height: 14vh;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+}
+
+.perfil {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 40px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    grid-template-rows: auto 100px;
+    grid-template-areas:
+        "sec1 sec2"
+        "sec3 sec3";
+    height: calc(100vh - 14vh);
+    overflow: hidden;
+}
+
+.section1 {
+    grid-area: sec1;
+    background-color: #fddab3;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.section2 {
+    grid-area: sec2;
+    background-color: #ffe4c6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    border: black 1px solid;
+}
+
+.section3 {
+    grid-area: sec3;
+    background-color: #790000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    color: white;
+}
+
+.btn {
+    background-color: #790000;
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #f68000;
+}
+
+.btn-comprar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    border: none;
+    border-radius: 6px;
+    background-color: #0e4e0e;
+    color: white;
+    height: 50px;
+    width: 100%;
+    font-size: 30px;
+}
+
+.btn-comprar:hover {
+    background-color: rgb(0, 209, 105);
+}
+
+.btn-comprar img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Layout geral do container carrinho */
+#carrinho-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+#carrinho-container p {
+    display: none;
+}
+
+footer p{
+    color: white;
+
+}
+
+footer a{
+    color: #f68000;
+}
+/* Estilo do produto */
+.produto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* distribui entre as áreas */
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    gap: 15px;
+    font-size: 18px;
+    color: #000000;
+}
+
+.produto-foto {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.produto-nome {
+    flex: 2;
+    font-weight: 700;
+    text-align: left;
+}
+
+.produto-controles {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centraliza o input na área */
+    gap: 6px;
+    flex: 1;
+}
+
+.produto-controles button {
+    background-color: #f68000;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.produto-controles button:hover {
+    background-color: #d86000;
+}
+
+.produto-controles input {
+    width: 50px; /* largura melhor pra input */
+    text-align: center;
+    font-size: 16px;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+    pointer-events: none; /* readonly visual */
+}
+
+/* Container para preço e botão remover */
+.produto-direita {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* espaçamento entre preço e botão remover */
+    flex: 1;
+    justify-content: flex-end; /* empurra para a direita */
+}
+
+.produto-preco {
+    min-width: 110px;
+    text-align: right;
+    color: #f68000;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Botão remover */
+.btn-remover {
+    background-color: #790000;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    flex-shrink: 0;
+    transition: background-color 0.2s;
+}
+
+.btn-remover:hover {
+    background-color: #ff4c4c;
+}
+
+/* Botão voltar */
+.botao-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.botao-voltar button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #790000;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botao-voltar button:hover {
+    background-color: #f68000;
+}
+
+.botao-voltar img {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 1024px) {
+  body{
+    overflow: auto;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .section1{
+    grid-area: 'sec1';
+    width: 100%;
+    height: 50vh;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  .section2,
+  .section3 {
+    grid-area: unset;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  #carrinho-container {
+    width: 100%;
+    height: 30px;
+  }
+
+  .produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .produto-foto {
+    width: 60px;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+
+  .produto-nome {
+    flex: unset;
+    font-weight: 700;
+    width: 100%;
+  }
+
+  .produto-controles {
+    flex: unset;
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+    display: flex;
+  }
+
+  .produto-controles button {
+    padding: 10px 16px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .produto-controles input {
+    width: 60px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .produto-direita {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .produto-preco {
+    font-size: 18px;
+    color: #f68000;
+  }
+
+  .btn-remover {
+    padding: 10px 14px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .section2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    gap: 10px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section2 .btn {
+    width: 30%;
+  }
+
+  #total {
+    font-weight: 700;
+    font-size: 18px;
+    color: #f68000;
+    flex-basis: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .btn-comprar {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    gap: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #0e4e0e;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btn-comprar img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .section3 {
+    padding: 15px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .botao-voltar {
+    position: static;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .botao-voltar button {
+    width: 90%;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #790000;
+    border: none;
+    border-radius: 6px;
+    color: white;
+  }
+
+  .botao-voltar button:hover {
+    background-color: #f68000;
+  }
+}

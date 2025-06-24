@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nome": "Coxinha de Frango",
+    "preco": 5.66,
+    "categoria": "salgados",
+    "imagem": "/imagens/a.jpg",
+    "descricao": "A queridinha do Brasil! Nossa coxinha de frango é feita com massa leve e crocante, recheada com frango desfiado temperado no capricho. É impossível comer uma só.",
+    "quantidade": 15,
+    "email": "mateuslimabispo15@gmail.com"
+  },
+  {
+    "id": 11,
+    "nome": "Coxinha",
+    "preco": 5.5,
+    "categoria": "salgados",
+    "imagem": "/imagens/a.jpg",
+    "descricao": "Clássica e irresistível! A coxinha tradicional que você conhece e ama, com casquinha dourada e recheio suculento. Sabor de rua, carinho de casa.",
+    "quantidade": 15,
+    "email": "mateuslimabispo15@gmail.com"
+  },
+  {
+    "id": 12,
+    "nome": "Esfirra de Carne",
+    "preco": 4.5,
+    "categoria": "salgados",
+    "imagem": "/imagens/a.jpg",
+    "descricao": "Explosão de sabor em cada mordida! Esfirra de carne com massa macia e recheio temperado no ponto certo. Um clássico de respeito!",
+    "quantidade": 1,
+    "email": "mateuslimabispo15@gmail.com"
+  },
+  {
+    "id": 13,
+    "nome": "Pastel de Queijo",
+    "preco": 5,
+    "categoria": "salgados",
+    "imagem": "/imagens/a.jpg",
+    "descricao": "Crocante por fora, derretendo por dentro. Nosso pastel de queijo é aquele que estica no primeiro mordidão. Pede um e entende por quê ele é tão amado.",
+    "quantidade": 10,
+    "email": "mateuslimabispo15@gmail.com"
+  },
+  {
+    "id": 14,
+    "nome": "Kibe",
+    "preco": 3.5,
+    "categoria": "salgados",
+    "imagem": "/imagens/a.jpg",
+    "descricao": "Simples, barato e delicioso. O kibe da Bonate vem com sabor marcante, carne temperada e textura perfeita. Lanche rápido com gosto de quero mais.",
+    "quantidade": 11,
+    "email": "mateuslimabispo15@gmail.com"
+  },
+  {
+    "id": 7,
+    "nome": "H2OH",
+    "preco": 3.9,
+    "categoria": "bebidas",
+    "imagem": "/imagens/h2oh.jpg",
+    "descricao": "Mais leve que refrigerante, mais saborosa que água. H2OH é o equilíbrio perfeito pra quem quer refrescância com leveza.",
+    "quantidade": 4,
+    "email": "mateuslimabispo15@gmail.com"
+  }
+]

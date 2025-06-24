@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/carrinho.css') }}" />
+</head>
+
+<body>
+  <header class="header">
+    <div onclick="voltarParaIndex()" style="cursor: pointer" class="botao-voltar">
+      <button>
+        <img src="{{ url_for('static', filename='img/voltar.png') }}" alt="Voltar" />
+        Voltar
+      </button>
+    </div>
+    <h1>BONATE</h1>
+  </header>
+
+  <main>
+    <!-- Seção principal (conteúdo dinâmico) -->
+    <section class="section1" id="conteudo-principal">
+      <div id="carrinho-container">
+        {% if produtos %}
+        {% for produto in produtos %}
+        <div class="produto" id="produto-{{ produto.id }}" data-id="{{ produto.id }}">
+          <img class="produto-foto" src="{{ produto.imagem }}" alt="{{ produto.nome }}" />
+
+          <span class="produto-nome"><strong>{{ produto.nome }}</strong></span>
+
+          <div class="produto-controles">
+            <button class="btn-qtd" data-id="{{ produto.id }}" data-delta="-1">-</button>
+            <input type="number" id="qtd-{{ produto.id }}" value="{{ produto.quantidade }}" min="1" max="1000"
+              readonly />
+            <button class="btn-qtd" data-id="{{ produto.id }}" data-delta="1">+</button>
+          </div>
+
+          <div class="produto-direita">
+            <span class="produto-preco" id="preco-{{ produto.id }}" data-preco-unitario="{{ produto.preco }}">
+              R$ {{ "%.2f"|format(produto.preco * produto.quantidade) }}
+            </span>
+
+            <button class="btn-remover" data-id="{{ produto.id }}">🗑</button>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="vazio" id="mensagem-vazio">Carrinho vazio.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Botões laterais -->
+    <section class="section2">
+      <div class="btn">
+        <button class="btn" onclick="carregarSecao('informacoes')">
+          Carrinho
+        </button>
+      </div>
+      <div class="btn">
+        <button class="btn" onclick="carregarSecao('endereco')">
+          Endereço
+        </button>
+      </div>
+      <div class="btn">
+        <button class="btn" onclick="carregarSecao('pagamento')">
+          Dados do Pagamento
+        </button>
+      </div>
+      <div id="total">Total: R$ {{ "%.2f"|format(total) }}</div>
+      <div class="btn-comprar">
+        <button class="btn-comprar">
+          Finalizar Compra
+          <img src="{{ url_for('static', filename='img/carrinho.png') }}" alt="Carrinho" />
+        </button>
+      </div>
+    </section>
+    <footer class="section3">
+      <p>Precisa de ajuda? <a id="link-ajuda" onclick="sobre()">clique aqui</a></p>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/remover.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
+  <script>
+    localStorage.setItem("usuarioLogado", JSON.stringify({ email: "{{ email }}" }));
+  </script>
+</body>
+
+</html>
