@@ -30,6 +30,11 @@ def salvar_carrinho(email, dados):
     with open(caminho, "w", encoding="utf-8") as f:
         json.dump(dados, f, indent=2, ensure_ascii=False)
 
+@app.route('/')
+def index():
+    # Exibe o carrinho vazio na raiz para garantir que o site abra
+    return render_template('carrinho.html', produtos=[], total=0, email='visitante')
+
 @app.route('/carrinho')
 def carrinho():
     try:

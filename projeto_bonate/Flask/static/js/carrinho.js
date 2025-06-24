@@ -1,4 +1,4 @@
-const API_HOST = `${window.location.protocol}//${window.location.hostname}:8080`;
+const API_HOST = "https://site-de-salgados-node.onrender.com";
 
 // Função pra atualizar total do carrinho
 function atualizarTotal() {
