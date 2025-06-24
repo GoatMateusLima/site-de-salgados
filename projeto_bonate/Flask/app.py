@@ -89,5 +89,6 @@ def atualizar_quantidade():
         return jsonify({ "erro": "Erro interno no servidor" }), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))  # PEGA PORTA DA VARIÁVEL DE AMBIENTE, SENÃO USA 5000
+    
     app.run(host="0.0.0.0", port=port)
