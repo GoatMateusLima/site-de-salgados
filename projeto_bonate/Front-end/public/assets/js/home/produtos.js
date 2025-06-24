@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const categorias = document.querySelector(".categorias-container");
 
   let produtosData = [];
-  const API_BASE = "";
+  const API_BASE = "https://site-de-salgados-node.onrender.com";
+
 
   // Função para pegar o email do usuário logado ou visitante
   function getEmailUsuario() {
