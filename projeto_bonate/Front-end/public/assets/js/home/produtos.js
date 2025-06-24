@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const categorias = document.querySelector(".categorias-container");
 
   let produtosData = [];
-  const API_BASE = `http://${window.location.hostname}:8080`;
+  const API_BASE = "";
 
   // Função para pegar o email do usuário logado ou visitante
   function getEmailUsuario() {
