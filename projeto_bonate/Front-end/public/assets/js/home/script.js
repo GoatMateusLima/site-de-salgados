@@ -1,5 +1,5 @@
 // Define o host da API baseado na máquina atual
-const API_HOST = `${window.location.protocol}//${window.location.hostname}:8080`;
+const API_HOST = "https://site-de-salgados-node.onrender.com";
 
 // ========== NOTIFICAÇÃO VISUAL ==========
 function mostrarNotificacao(mensagem, duracao = 3000) {
