@@ -130,5 +130,5 @@ def excluir_item():
         return jsonify({"erro": "Erro interno"}), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 10000))  # Usando 10000 como padrão
     app.run(host='0.0.0.0', port=port)
