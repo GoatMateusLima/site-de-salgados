@@ -30,14 +30,13 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader(
-  "Content-Security-Policy",
-  "default-src 'self'; " +
-  "connect-src 'self' https://site-de-salgados-node.onrender.com:8080; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-  "font-src 'self' https://fonts.gstatic.com; " +
-  "img-src 'self' data:; " +
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval';"
-);
+    "Content-Security-Policy",
+    "default-src 'self'; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "img-src 'self' data:; " +
+    "script-src 'self';"
+  );
   next();
 });
 
