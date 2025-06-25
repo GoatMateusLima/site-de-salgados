@@ -16,8 +16,12 @@ def log_requests(response):
         f"{request.remote_addr} {request.method} {request.path} {response.status_code}"
     )
     return response
-
+    
+@app.route('/health')
+def health_check():
+    return jsonify({"status": "ok", "port": os.environ.get('PORT', 10000)}), 200
 # Rota principal do carrinho
+
 @app.route('/carrinho')
 def carrinho():
     try:
