@@ -36,10 +36,7 @@ def salvar_carrinho(email, dados):
 @app.route('/carrinho')
 def carrinho():
     try:
-        ip_local = socket.gethostbyname(socket.gethostname())
-        url_node = f'http://{ip_local}:8080'
-
-        # Pega o email que o frontend enviou na query string
+        url_node = os.getenv("URL_NODE_BACKEND", "http://localhost:8080")
         email_usuario = request.args.get('email', 'visitante')
 
         print(f"URL do backend Node: {url_node}")
@@ -71,6 +68,7 @@ def carrinho():
         total = 0
 
     return render_template('carrinho.html', produtos=produtos_carrinho, total=total, email=email_usuario)
+
  
 # Rota para atualizar a quantidade de um item no carrinho
 @app.route('/atualizar-quantidade', methods=['POST'])
@@ -100,3 +98,6 @@ def atualizar_quantidade():
         print("Erro ao atualizar quantidade:", e)
         return jsonify({ "erro": "Erro interno no servidor" }), 500
 
+# Executar
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
