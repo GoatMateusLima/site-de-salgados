@@ -20,34 +20,47 @@
   </header>
 
   <main>
+    <!-- Debug hidden -->
+    <div style="display:none" id="template-data"
+         data-produtos="{{ produtos|tojson|forceescape }}"
+         data-api-url="{{ api_url }}"></div>
+
     <!-- Seção principal (conteúdo dinâmico) -->
     <section class="section1" id="conteudo-principal">
       <div id="carrinho-container">
-        {% if produtos %}
+        {% if produtos and produtos|length > 0 %}
         {% for produto in produtos %}
         <div class="produto" id="produto-{{ produto.id }}" data-id="{{ produto.id }}">
-          <img class="produto-foto" src="{{ produto.imagem }}" alt="{{ produto.nome }}" />
+          <img class="produto-foto" 
+               src="{{ produto.imagem if produto.imagem.startswith(('http', '//')) else api_url + produto.imagem }}" 
+               alt="{{ produto.nome }}"
+               onerror="this.src='{{ url_for('static', filename='img/placeholder.png') }}'" />
 
           <span class="produto-nome"><strong>{{ produto.nome }}</strong></span>
 
           <div class="produto-controles">
             <button class="btn-qtd" data-id="{{ produto.id }}" data-delta="-1">-</button>
-            <input type="number" id="qtd-{{ produto.id }}" value="{{ produto.quantidade }}" min="1" max="1000"
-              readonly />
+            <input type="number" class="input-qtd" id="qtd-{{ produto.id }}" 
+                   value="{{ produto.quantidade }}" min="1" max="1000" readonly />
             <button class="btn-qtd" data-id="{{ produto.id }}" data-delta="1">+</button>
           </div>
 
           <div class="produto-direita">
-            <span class="produto-preco" id="preco-{{ produto.id }}" data-preco-unitario="{{ produto.preco }}">
+            <span class="produto-preco" id="preco-{{ produto.id }}" 
+                  data-preco-unitario="{{ produto.preco }}">
               R$ {{ "%.2f"|format(produto.preco * produto.quantidade) }}
             </span>
 
-            <button class="btn-remover" data-id="{{ produto.id }}">🗑</button>
+            <button class="btn-remover" data-id="{{ produto.id }}">
+              <img src="{{ url_for('static', filename='img/lixeira.png') }}" alt="Remover" />
+            </button>
           </div>
         </div>
         {% endfor %}
         {% else %}
-        <p class="vazio" id="mensagem-vazio">Carrinho vazio.</p>
+        <p class="vazio" id="mensagem-vazio">
+          {{ 'Faça login para ver seu carrinho' if email == 'visitante' else 'Seu carrinho está vazio' }}
+        </p>
         {% endif %}
       </div>
     </section>
@@ -69,9 +82,9 @@
           Dados do Pagamento
         </button>
       </div>
-      <div id="total">Total: R$ {{ "%.2f"|format(total) }}</div>
+      <div id="total">Total: R$ {{ "%.2f"|format(total if total else 0) }}</div>
       <div class="btn-comprar">
-        <button class="btn-comprar">
+        <button class="btn-comprar" id="finalizar-compra">
           Finalizar Compra
           <img src="{{ url_for('static', filename='img/carrinho.png') }}" alt="Carrinho" />
         </button>
@@ -83,11 +96,23 @@
   </main>
 
   <!-- Scripts -->
+  <script>
+    // Debug inicial
+    const templateData = document.getElementById('template-data');
+    const produtosData = JSON.parse(templateData.dataset.produtos);
+    console.log('Dados do Template:', {
+      produtos: produtosData,
+      apiUrl: templateData.dataset.apiUrl,
+      email: "{{ email }}"
+    });
+
+    // Garante que o email está disponível para os scripts
+    window.userEmail = "{{ email }}" || 'visitante';
+    localStorage.setItem("usuarioLogado", JSON.stringify({ email: window.userEmail }));
+  </script>
+  
   <script src="{{ url_for('static', filename='js/remover.js') }}"></script>
   <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
-  <script>
-    localStorage.setItem("usuarioLogado", JSON.stringify({ email: "{{ email }}" }));
-  </script>
 </body>
 
 </html>
