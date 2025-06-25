@@ -8,6 +8,10 @@ app = Flask(__name__)
 # Configuração da URL da API Node (use sua URL)
 API_BASE_URL = "https://site-de-salgados-node.onrender.com"
 
+@app.route('/')
+def health_check():
+    return jsonify({"status": "ok", "message": "API de salgados operacional"}), 200
+
 @app.after_request
 def log_requests(response):
     app.logger.info(
