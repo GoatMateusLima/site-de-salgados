@@ -100,7 +100,3 @@ def atualizar_quantidade():
         print("Erro ao atualizar quantidade:", e)
         return jsonify({ "erro": "Erro interno no servidor" }), 500
 
-# Executar
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Pega a porta do Render, se tiver, senão usa 5000 localmente
-    app.run(debug=True, host='0.0.0.0', port=port)
