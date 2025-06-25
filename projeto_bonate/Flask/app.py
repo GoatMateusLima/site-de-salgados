@@ -1,103 +1,132 @@
 from flask import Flask, render_template, request, jsonify
 import requests
-import socket
 import os
-import json
+from urllib.parse import urljoin
 
 app = Flask(__name__)
 
-# Caminho para a pasta do banco de dados
-DB_DIR = os.path.join(os.path.dirname(__file__), "../Banco-de-dados")
+# Configuração da URL da API Node (use sua URL)
+API_BASE_URL = "https://site-de-salgados-node.onrender.com"
 
-# Funções auxiliares para manipular arquivos do carrinho
-def caminho_carrinho(email):
-    email_seguro = "carrinho-" + email.replace("@", "_").replace(".", "_") + ".json"
-    return os.path.join(DB_DIR, email_seguro)
+@app.after_request
+def log_requests(response):
+    app.logger.info(
+        f"{request.remote_addr} {request.method} {request.path} {response.status_code}"
+    )
+    return response
 
-def carregar_carrinho(email, criar=False):
-    caminho = caminho_carrinho(email)
-    if not os.path.exists(caminho):
-        if criar:
-            with open(caminho, "w", encoding="utf-8") as f:
-                json.dump([], f)
-        return []
-    with open(caminho, "r", encoding="utf-8") as f:
-        try:
-            return json.load(f)
-        except:
-            return []
-
-def salvar_carrinho(email, dados):
-    caminho = caminho_carrinho(email)
-    with open(caminho, "w", encoding="utf-8") as f:
-        json.dump(dados, f, indent=2, ensure_ascii=False)
-
-# Rota principal para renderizar o carrinho
+# Rota principal do carrinho
 @app.route('/carrinho')
 def carrinho():
     try:
-        url_node = os.getenv("URL_NODE_BACKEND", "http://localhost:8080")
         email_usuario = request.args.get('email', 'visitante')
-
-        print(f"URL do backend Node: {url_node}")
-        print(f"Email do usuário recebido: {email_usuario}")
-
-        carrinho_response = requests.get(f'{url_node}/carrinho', params={'email': email_usuario})
+        
+        # Endpoints da API
+        carrinho_url = urljoin(API_BASE_URL, '/carrinho')
+        produtos_url = urljoin(API_BASE_URL, '/produtos')
+        
+        # Headers para melhor identificação no backend
+        headers = {
+            'User-Agent': 'FlaskFrontend/1.0',
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+        
+        # Requisições paralelas (melhor performance)
+        carrinho_response = requests.get(carrinho_url, 
+                                      params={'email': email_usuario}, 
+                                      headers=headers,
+                                      timeout=10)
+        produtos_response = requests.get(produtos_url, 
+                                      headers=headers,
+                                      timeout=10)
+        
+        # Verifica status das respostas
         carrinho_response.raise_for_status()
-        carrinho = carrinho_response.json()
-        print("Produtos no carrinho:", carrinho)
-
-        produtos_response = requests.get(f'{url_node}/produtos')
         produtos_response.raise_for_status()
+        
+        # Processa os dados
+        carrinho_itens = carrinho_response.json()
         produtos = produtos_response.json()
 
+        # Combina os dados do carrinho com informações dos produtos
         produtos_carrinho = []
-        for item in carrinho:
-            prod = next((p for p in produtos if p['id'] == item['id']), None)
-            if prod:
-                prod_carrinho = prod.copy()
-                prod_carrinho['quantidade'] = item['quantidade']
-                prod_carrinho['imagem'] = f"{url_node}{prod_carrinho['imagem']}"
-                produtos_carrinho.append(prod_carrinho)
+        for item in carrinho_itens:
+            produto = next((p for p in produtos if str(p['id']) == str(item['id'])), None)
+            if produto:
+                produto_completo = {
+                    **produto,
+                    'quantidade': item['quantidade'],
+                    'imagem': urljoin(API_BASE_URL, produto['imagem'])
+                }
+                produtos_carrinho.append(produto_completo)
 
+        # Calcula o total
         total = sum(p['preco'] * p['quantidade'] for p in produtos_carrinho)
 
+    except requests.exceptions.RequestException as e:
+        print(f"Erro na API: {str(e)}")
+        produtos_carrinho = []
+        total = 0
     except Exception as e:
-        print("Erro ao carregar dados do carrinho ou produtos:", e)
+        print(f"Erro inesperado: {str(e)}")
         produtos_carrinho = []
         total = 0
 
-    return render_template('carrinho.html', produtos=produtos_carrinho, total=total, email=email_usuario)
+    return render_template('carrinho.html', 
+                         produtos=produtos_carrinho, 
+                         total=total, 
+                         email=email_usuario,
+                         api_url=API_BASE_URL)
 
- 
-# Rota para atualizar a quantidade de um item no carrinho
+# Rotas de API (ajustadas para seu endpoint)
 @app.route('/atualizar-quantidade', methods=['POST'])
 def atualizar_quantidade():
     try:
         dados = request.get_json()
-        id = dados.get("id")
-        quantidade = dados.get("quantidade")
-        email = dados.get("email")
+        
+        if not all(k in dados for k in ['id', 'quantidade', 'email']):
+            return jsonify({"erro": "Dados incompletos"}), 400
+            
+        response = requests.post(
+            urljoin(API_BASE_URL, '/atualizar-quantidade'),
+            json=dados,
+            timeout=8
+        )
+        
+        return jsonify(response.json()), response.status_code
 
-        if id is None or quantidade is None or not email:
-            return jsonify({ "erro": "ID, quantidade e email são obrigatórios" }), 400
-
-        carrinho = carregar_carrinho(email, criar=True)
-        produto = next((p for p in carrinho if int(p['id']) == int(id)), None)
-
-        if not produto:
-            return jsonify({ "erro": "Produto não encontrado no carrinho" }), 404
-
-        quantidade = max(1, min(1000, int(quantidade)))
-        produto['quantidade'] = quantidade
-
-        salvar_carrinho(email, carrinho)
-        return jsonify({ "mensagem": "Quantidade atualizada com sucesso" })
-
+    except requests.exceptions.Timeout:
+        return jsonify({"erro": "Tempo de resposta excedido"}), 504
+    except requests.exceptions.RequestException:
+        return jsonify({"erro": "Falha na comunicação com o servidor"}), 502
     except Exception as e:
-        print("Erro ao atualizar quantidade:", e)
-        return jsonify({ "erro": "Erro interno no servidor" }), 500
+        print(f"Erro: {str(e)}")
+        return jsonify({"erro": "Erro interno"}), 500
 
-# Executar
+@app.route('/excluir-item', methods=['POST'])
+def excluir_item():
+    try:
+        dados = request.get_json()
+        
+        if not all(k in dados for k in ['id', 'email']):
+            return jsonify({"erro": "Dados incompletos"}), 400
+            
+        response = requests.post(
+            urljoin(API_BASE_URL, '/excluir'),
+            json=dados,
+            timeout=8
+        )
+        
+        return jsonify(response.json()), response.status_code
+
+    except requests.exceptions.Timeout:
+        return jsonify({"erro": "Tempo de resposta excedido"}), 504
+    except requests.exceptions.RequestException:
+        return jsonify({"erro": "Falha na comunicação com o servidor"}), 502
+    except Exception as e:
+        print(f"Erro: {str(e)}")
+        return jsonify({"erro": "Erro interno"}), 500
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

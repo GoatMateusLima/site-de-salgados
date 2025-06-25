@@ -1,6 +1,6 @@
 const API_HOST = "https://site-de-salgados-node.onrender.com";
 
-// Função pra atualizar total do carrinho
+// Função para atualizar o total do carrinho
 function atualizarTotal() {
   let total = 0;
   document.querySelectorAll(".produto").forEach(prodEl => {
@@ -18,7 +18,7 @@ function atualizarTotal() {
   }
 }
 
-// Mostrar ou esconder mensagem de carrinho vazio
+// Controla mensagem de carrinho vazio
 function controlarMensagemVazio() {
   const mensagemVazio = document.getElementById("mensagem-vazio");
   const produtosRestantes = document.querySelectorAll(".produto").length;
@@ -28,22 +28,29 @@ function controlarMensagemVazio() {
   }
 }
 
-// Função para remover produto (chamada pelo event listener)
+// Função para remover produto do carrinho
 async function confirmarRemocao(idProduto) {
   if (!confirm("Você deseja mesmo excluir do seu carrinho? Você perderá toda quantidade de salgados que colocou.")) return;
 
   try {
     const usuario = JSON.parse(localStorage.getItem("usuarioLogado")) || { email: "visitante" };
 
-    const resposta = await fetch(`${API_HOST}/remover`, {
+    const resposta = await fetch(`${API_HOST}/excluir`, {  // Alterado para /excluir
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: Number(idProduto), email: usuario.email }),
+      headers: { 
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ 
+        id: Number(idProduto), 
+        email: usuario.email 
+      }),
     });
 
-    const resultado = await resposta.json();
-
-    if (!resposta.ok) throw new Error(resultado.erro || "Erro desconhecido");
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      throw new Error(erro.message || "Erro ao remover item");
+    }
 
     const elemento = document.getElementById(`produto-${idProduto}`);
     if (elemento) elemento.remove();
@@ -51,17 +58,33 @@ async function confirmarRemocao(idProduto) {
     atualizarTotal();
     controlarMensagemVazio();
 
-    alert("Produto removido com sucesso!");
+    // Atualização mais suave sem alerta
+    Toastify({
+      text: "Produto removido com sucesso!",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#4CAF50",
+    }).showToast();
   } catch (err) {
-    alert("Erro ao remover produto: " + err.message);
+    console.error("Erro ao remover produto:", err);
+    Toastify({
+      text: `Erro: ${err.message}`,
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#f44336",
+    }).showToast();
   }
 }
 
-// Função para alterar quantidade (chamada pelo event listener)
+// Função para alterar quantidade
 async function alterarQuantidade(idProduto, delta) {
   const idNum = Number(idProduto);
   if (isNaN(idNum)) {
-    alert("ID do produto inválido");
+    console.error("ID do produto inválido");
     return;
   }
 
@@ -79,13 +102,21 @@ async function alterarQuantidade(idProduto, delta) {
 
     const resposta = await fetch(`${API_HOST}/atualizar-quantidade`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: idNum, quantidade: novaQuantidade, email: usuario.email }),
+      headers: { 
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ 
+        id: idNum, 
+        quantidade: novaQuantidade, 
+        email: usuario.email 
+      }),
     });
 
-    const resultado = await resposta.json();
-
-    if (!resposta.ok) throw new Error(resultado.erro || "Erro desconhecido");
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      throw new Error(erro.message || "Erro ao atualizar quantidade");
+    }
 
     inputQtd.value = novaQuantidade;
 
@@ -95,54 +126,88 @@ async function alterarQuantidade(idProduto, delta) {
     precoTotalEl.textContent = `R$ ${(precoUnitario * novaQuantidade).toFixed(2).replace(".", ",")}`;
 
     atualizarTotal();
+
+    // Feedback visual
+    inputQtd.classList.add("qtd-updated");
+    setTimeout(() => inputQtd.classList.remove("qtd-updated"), 300);
+
   } catch (err) {
-    alert("Erro ao atualizar quantidade: " + err.message);
+    console.error("Erro ao atualizar quantidade:", err);
+    Toastify({
+      text: `Erro: ${err.message}`,
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#f44336",
+    }).showToast();
   }
 }
 
-// Botão voltar para index
+// Funções de navegação
 function voltarParaIndex() {
-  window.location.href = `${window.location.protocol}//${window.location.hostname}:8080/index.html`; // Ajuste se necessário
+  window.location.href = `${window.location.protocol}//${window.location.hostname}/index.html`;
 }
 
-// Função para iniciar os event listeners — chama depois que a página carregou
+function sobre() {
+  window.location.href = `${window.location.protocol}//${window.location.hostname}/sobre.html`;
+}
+
+// Inicia todos os event listeners
 function iniciarEventListeners() {
   // Remover produto
   document.querySelectorAll(".btn-remover").forEach(botao => {
     botao.addEventListener("click", (e) => {
       const idProduto = botao.dataset.id;
-      if (!idProduto) return;
-      confirmarRemocao(idProduto);
+      if (idProduto) confirmarRemocao(idProduto);
     });
   });
 
-  // Alterar quantidade (+ e -)
+  // Alterar quantidade
   document.querySelectorAll(".btn-qtd").forEach(botao => {
     botao.addEventListener("click", (e) => {
       const idProduto = botao.dataset.id;
       const delta = Number(botao.dataset.delta);
-      if (!idProduto || isNaN(delta)) return;
-      alterarQuantidade(idProduto, delta);
+      if (idProduto && !isNaN(delta)) alterarQuantidade(idProduto, delta);
     });
   });
 
-  // Botão voltar (se quiser continuar com o onclick no HTML, ok, mas pode mudar aqui também)
+  // Input manual de quantidade
+  document.querySelectorAll(".input-qtd").forEach(input => {
+    input.addEventListener("change", (e) => {
+      const idProduto = input.dataset.id;
+      const novaQuantidade = parseInt(input.value);
+      if (idProduto && !isNaN(novaQuantidade)) {
+        const quantidadeAtual = parseInt(input.dataset.lastValue || "1");
+        alterarQuantidade(idProduto, novaQuantidade - quantidadeAtual);
+        input.dataset.lastValue = novaQuantidade.toString();
+      }
+    });
+  });
+
+  // Botão voltar
   const btnVoltar = document.querySelector(".botao-voltar");
   if (btnVoltar) {
-    btnVoltar.addEventListener("click", (e) => {
-      voltarParaIndex();
-    });
+    btnVoltar.addEventListener("click", voltarParaIndex);
   }
 }
 
-function sobre() {
-  window.location.href = `${window.location.protocol}//${window.location.hostname}:8080/sobre.html`; // Ajuste se necessário
-}
-
-// Chamando função pra ativar os listeners após o carregamento do DOM
+// Quando o DOM estiver carregado
 document.addEventListener("DOMContentLoaded", () => {
   iniciarEventListeners();
   atualizarTotal();
   controlarMensagemVazio();
+  
+  // Adiciona tratamento de erro global
+  window.addEventListener("error", (e) => {
+    console.error("Erro global:", e.error);
+    Toastify({
+      text: "Ocorreu um erro inesperado",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#f44336",
+    }).showToast();
+  });
 });
-
