@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       modalProduto.classList.add("hidden");
       
       const usuario = JSON.parse(localStorage.getItem("usuarioLogado")) || { email: "visitante" };
-window.location.href = `https://site-de-salgados-flask.onrender.com/carrinho?email=${encodeURIComponent(usuario.email)}`;
+window.location.href = `https://site-de-salgados-flask-qaql.onrender.com/carrinho?email=${encodeURIComponent(usuario.email)}`;
 
     } catch (err) {
       alert("Erro: " + err.message);
