@@ -23,11 +23,14 @@ O design foi criado pela minha colega Ágatha, enquanto eu fiquei responsável p
 ![screenshot da home](telasIMG/homeBonate.png)
 ![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
 
-![screenshot da home](telasIMG/homeBonate.png)
-![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+![screenshot da home](telasIMG/cadastro.png)
+![screenshot do carrinho](telasIMG/login.png)
 
-![screenshot da home](telasIMG/homeBonate.png)
-![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+![screenshot da home](telasIMG/menu.png)
+![screenshot do carrinho](telasIMG/modal.png)
+
+![screenshot da home](telasIMG/produtos.png)
+![screenshot do carrinho](telasIMG/sobreNos.png)
 
 
 ## Telas no Celular
