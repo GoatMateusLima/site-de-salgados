@@ -29,32 +29,9 @@ Este projeto tem 3 partes. Cada uma vai em um serviço diferente:
 
 ---
 
-## 3. Front-end (HTML/CSS/JS) → Vercel
-
-1. Acesse https://vercel.com e crie uma conta
-2. Clique em "New Project" e importe seu repositório
-3. Configure:
-   - **Root Directory:** `Front-end`
-   - **Framework:** Other (nenhum)
-4. Clique em Deploy!
-
----
-
 ## ⚠️ Após os deploys, atualize as URLs
 
 Em `Front-end/assets/js/home/produtos.js`, confirme que as URLs batem com as que o Render gerou:
 - `API_BASE` → URL do Node
 - URL do redirect do carrinho → URL do Flask
 
----
-
-## 🐛 Bug corrigido
-
-O bug da apresentação estava nesta linha de `produtos.js`:
-```js
-// ❌ ANTES (só funcionava no seu computador)
-window.location.href = `http://${window.location.hostname}:5000/carrinho?...`
-
-// ✅ DEPOIS (funciona em produção)  
-window.location.href = `https://site-de-salgados-flask.onrender.com/carrinho?...`
-```
