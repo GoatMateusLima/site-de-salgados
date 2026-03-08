@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: site-de-salgados-node
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free

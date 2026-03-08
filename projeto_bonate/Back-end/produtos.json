@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "nome": "Coxinha de Frango",
+    "preco": 5.66,
+    "categoria": "salgados",
+    "imagem": "/imagens/coxinha-de-frango.jpg",
+    "descricao": "A queridinha do Brasil! Nossa coxinha de frango é feita com massa leve e crocante, recheada com frango desfiado temperado no capricho. É impossível comer uma só."
+  },
+  {
+    "id": 2,
+    "nome": "Guaraná",
+    "preco": 4.99,
+    "categoria": "bebidas",
+    "imagem": "/imagens/guarana.jpg",
+    "descricao": "Refrescância que o povo ama! O Guaraná tradicional que combina com tudo e faz qualquer salgado ficar ainda mais gostoso."
+  },
+  {
+    "id": 3,
+    "nome": "Pepsi",
+    "preco": 4.50,
+    "categoria": "bebidas",
+    "imagem": "/imagens/pepsi.jpg",
+    "descricao": "Pepsi gelada é sinônimo de pausa perfeita. Doce na medida certa, desce redondo e vai bem com qualquer lanche."
+  },
+  {
+    "id": 4,
+    "nome": "Fanta Laranja",
+    "preco": 4.75,
+    "categoria": "bebidas",
+    "imagem": "/imagens/fanta-laranja.jpg",
+    "descricao": "Chegou o sabor que refresca de verdade! Fanta Laranja, com gás na medida e aquele gostinho de infância que nunca sai de moda."
+  },
+  {
+    "id": 5,
+    "nome": "Sprite",
+    "preco": 4.60,
+    "categoria": "bebidas",
+    "imagem": "/imagens/sprite.jpg",
+    "descricao": "Leve, gelada e cítrica. Sprite limpa o paladar e renova o humor. Ideal pra acompanhar aquele combo de salgados."
+  },
+  {
+    "id": 6,
+    "nome": "Água Mineral",
+    "preco": 2.00,
+    "categoria": "bebidas",
+    "imagem": "/imagens/agua-mineral.jpg",
+    "descricao": "Simples, pura e essencial. Água mineral pra refrescar, hidratar e acompanhar sua refeição sem pesar."
+  },
+  {
+    "id": 7,
+    "nome": "H2OH",
+    "preco": 3.90,
+    "categoria": "bebidas",
+    "imagem": "/imagens/h2oh.jpg",
+    "descricao": "Mais leve que refrigerante, mais saborosa que água. H2OH é o equilíbrio perfeito pra quem quer refrescância com leveza."
+  },
+  {
+    "id": 8,
+    "nome": "Suco de Laranja",
+    "preco": 5.00,
+    "categoria": "bebidas",
+    "imagem": "/imagens/suco-de-laranja.jpg",
+    "descricao": "Feito com fruta de verdade! Suco de laranja natural e vibrante, refrescante e cheio de energia. Combina com qualquer momento."
+  },
+  {
+    "id": 9,
+    "nome": "Suco de Uva",
+    "preco": 5.00,
+    "categoria": "bebidas",
+    "imagem": "/imagens/suco-de-uva.jpg",
+    "descricao": "Sabor intenso e marcante da uva! Nosso suco natural é uma opção saudável, doce na medida e com toque caseiro."
+  },
+  {
+    "id": 10,
+    "nome": "Red Bull",
+    "preco": 7.99,
+    "categoria": "bebidas",
+    "imagem": "/imagens/Red-Bull.jpg",
+    "descricao": "Precisa de energia? Esse aqui levanta até segunda-feira! Energético potente e saboroso pra te dar aquele gás no meio do dia."
+  },
+ {
+  "id": 11,
+  "nome": "Empanado de Frango",
+  "preco": 5.50,
+  "categoria": "salgados",
+  "imagem": "/imagens/empanado-frango.jpg",
+  "descricao": "Empanado crocante por fora, suculento por dentro. O frango bem temperado envolvido numa casquinha dourada que derrete na boca. Ideal pra qualquer lanche ou refeição rápida."
+},
+  {
+    "id": 12,
+    "nome": "Esfirra de Carne",
+    "preco": 4.50,
+    "categoria": "salgados",
+    "imagem": "/imagens/esfirra-de-carne.jpg",
+    "descricao": "Explosão de sabor em cada mordida! Esfirra de carne com massa macia e recheio temperado no ponto certo. Um clássico de respeito!"
+  },
+  {
+    "id": 13,
+    "nome": "Pastel de Queijo",
+    "preco": 5.00,
+    "categoria": "salgados",
+    "imagem": "/imagens/pastel-de-queijo.jpg",
+    "descricao": "Crocante por fora, derretendo por dentro. Nosso pastel de queijo é aquele que estica no primeiro mordidão. Pede um e entende por quê ele é tão amado."
+  },
+  {
+    "id": 14,
+    "nome": "Kibe",
+    "preco": 3.50,
+    "categoria": "salgados",
+    "imagem": "/imagens/kibe.jpg",
+    "descricao": "Simples, barato e delicioso. O kibe da Bonate vem com sabor marcante, carne temperada e textura perfeita. Lanche rápido com gosto de quero mais."
+  },
+  {
+    "id": 15,
+    "nome": "Bolinha de Queijo",
+    "preco": 4.00,
+    "categoria": "salgados",
+    "imagem": "/imagens/bolinha-de-queijo.jpg",
+    "descricao": "Pequena no tamanho, gigante no sabor. A bolinha de queijo tem casquinha crocante e recheio cremoso. Pra comer de olhos fechados!"
+  },
+  {
+    "id": 16,
+    "nome": "Empada de Frango",
+    "preco": 4.80,
+    "categoria": "salgados",
+    "imagem": "/imagens/empada-de-frango.jpg",
+    "descricao": "Aquela empadinha que derrete na boca! Massa amanteigada e recheio de frango cremoso que te faz lembrar dos almoços em família."
+  },
+  {
+    "id": 17,
+    "nome": "Risoles de Presunto",
+    "preco": 5.00,
+    "categoria": "salgados",
+    "imagem": "/imagens/risoles-de-presunto.jpg",
+    "descricao": "O risoles perfeito existe! Massa douradinha e recheio de presunto com queijo que derrete e gruda no coração. Vem sentir esse sabor!"
+  },
+  {
+    "id": 18,
+    "nome": "Mini Pizza",
+    "preco": 6.00,
+    "categoria": "salgados",
+    "imagem": "/imagens/mini-pizza.jpg",
+    "descricao": "Mini no nome, gigante no sabor. Nossa mini pizza tem massa leve, molho caseiro e queijo de verdade. Lanche rápido com cara de sábado à noite."
+  },
+  {
+    "id": 19,
+    "nome": "Enroladinho de Salsicha",
+    "preco": 4.20,
+    "categoria": "salgados",
+    "imagem": "/imagens/enroladinho-de-salsicha.jpg",
+    "descricao": "O enroladinho que não enrola no sabor! Massa fofinha, salsicha saborosa e muito carinho em cada detalhe. Clássico de festa, mas pode ser só seu."
+  },
+  {
+    "id": 20,
+    "nome": "Croquete de Carne",
+    "preco": 5.30,
+    "categoria": "salgados",
+    "imagem": "/imagens/croquete-de-carne.jpg",
+    "descricao": "Croquete de carne pra quem não brinca na hora do lanche. Casquinha firme, recheio suculento e tempero da casa. É pegar e sair sorrindo."
+  }
+]

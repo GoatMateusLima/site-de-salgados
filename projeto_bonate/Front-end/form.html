@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="/img/home/logo/bonate.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/home/header.css">
+    <link rel="stylesheet" href="assets/css/login-cadastro/cadastro.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>BONATE</h1>
+        <nav class="nav-links">
+            <div class="menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html" class="link">Inicio</a></li>
+                <hr />
+                <li><a href="sobre.html#localizacao" class="link">Localização</a></li>
+                <hr />
+                <li><a href="sobre.html" class="link">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section class="design">
+            <img src="/img/form/What-Are-Coxinhas.jpg" alt="">
+
+        </section>
+        <section class="main">
+
+            <div class="form-container">
+                <div id="notificacao" class="notificacao oculto"></div>
+
+                <input checked type="checkbox" id="switch" />
+
+                <!-- CADASTRO -->
+                <div class="sign-up-container">
+                    <img src="/img/form/palitos-de-queijo-venezuelano-tradicional.jpg" alt="">
+                    <div class="for-login">
+                        <h2 class="form-title">
+                            <h2>Cadastrar</h2>
+                            <form class="sign-up-form" id="form-cadastro">
+                                <label for="nome-cadastro">Nome:</label>
+                                <input class="input" placeholder="João da Silva" id="nome-cadastro" type="text" autocomplete="off" />
+
+                                <label for="email-cadastro">Email:</label>
+                                <input class="input" placeholder="exemplo@email.com" id="email-cadastro" type="email" />
+
+                                <label for="senha-cadastro">Senha:</label>
+                                <input class="input" placeholder="••••••••" id="senha-cadastro" type="password"   autocomplete="off" />
+
+                                <label for="switch" class="switch-label">Já tem uma conta?</label>
+                                <button type="submit" id="btn-cadastrar">Cadastrar</button>
+                            </form>
+                    </div>
+                </div>
+
+                <!-- LOGIN -->
+                <div class="log-in-container">
+                    <img src="/img/form/Inserir um título.png" alt="">
+                    <div class="for-login">
+                        <h2 class="form-title">Login</h2>
+                        <form class="log-in-form" id="form-login">
+                            <label for="email-login">Email:</label>
+                            <input class="input" placeholder="exemplo@email.com" id="email-login" type="email"  autocomplete="off" />
+
+                            <label for="senha-login">Senha:</label>
+                            <input class="input" placeholder="••••••••" id="senha-login" type="password"  autocomplete="off" />
+
+                            <label for="switch" class="switch-label">Não tem uma conta?</label>
+                            <button type="submit" id="btn-login">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Mensagem -->
+            <p id="mensagem"></p>
+
+        </section>
+
+    </main>
+
+    <script src="assets/js/home/script.js"></script>
+</body>
+
+</html>
