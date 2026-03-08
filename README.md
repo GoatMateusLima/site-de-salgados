@@ -47,16 +47,18 @@ O design foi criado pela minha colega Ágatha, enquanto eu fiquei responsável p
 ![screenshot do carrinho](telasIMG/menuMobile.jpg)
 
 ---
+```markdown
 ## 🚀 Como fazer o Deploy
 
-Este projeto tem 3 partes. Cada uma vai em um serviço diferente:
+Este projeto usa dois serviços no Render. O Front-end é servido automaticamente pelo Node — não é necessário um serviço separado para ele.
 
 ---
 
-## 1. Back-end Node (Express) → Render
+### 1. Back-end Node (Express) → Render
+> Serve o Front-end, as imagens e a API de produtos/usuários/carrinho.
 
 1. Acesse https://render.com e crie uma conta gratuita
-2. Clique em "New Web Service"
+2. Clique em **New Web Service**
 3. Conecte seu repositório GitHub
 4. Configure:
    - **Root Directory:** `Back-end`
@@ -66,21 +68,33 @@ Este projeto tem 3 partes. Cada uma vai em um serviço diferente:
 
 ---
 
-## 2. Flask (Carrinho) → Render
+### 2. Flask (Carrinho) → Render
+> Serve apenas a página do carrinho de compras.
 
-1. No Render, crie outro "New Web Service"
+1. No Render, crie outro **New Web Service**
 2. Conecte o mesmo repositório
 3. Configure:
    - **Root Directory:** `Flask`
    - **Build Command:** `pip install -r requirements.txt`
    - **Start Command:** `gunicorn app:app`
-4. Após o deploy, copie a URL (ex: `https://site-de-salgados-flask.onrender.com`)
+4. Após o deploy, copie a URL gerada (ex: `https://site-de-salgados-flask.onrender.com`)
 
 ---
 
-## ⚠️ Após os deploys, atualize as URLs
+### ⚠️ Após os deploys, atualize as URLs
 
-Em `Front-end/assets/js/home/produtos.js`, confirme que as URLs batem com as que o Render gerou:
+Nos arquivos abaixo, substitua pelas URLs reais geradas pelo Render:
+
+**`Front-end/assets/js/home/btn.js`**
+- `NODE_URL` → URL do Node
+- `FLASK_URL` → URL do Flask
+
+**`Front-end/assets/js/home/produtos.js`**
 - `API_BASE` → URL do Node
 - URL do redirect do carrinho → URL do Flask
+
+**`Flask/static/js/carrinho.js`**
+- `API_HOST` → URL do Node
+- Função `voltarParaIndex()` → URL do Node
+```
 
