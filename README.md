@@ -1,4 +1,48 @@
-# 🚀 Como fazer o Deploy
+# BONATE
+
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+## Sobre o projeto
+O Bonate foi criado como atividade do ensino médio técnico, onde o professor propôs que cada aluno desenvolvesse uma loja virtual baseada em algo real. O projeto é uma loja de salgados com carrinho de compras funcional.
+
+Por ser meu primeiro projeto envolvendo tecnologias além do HTML e CSS básico, enfrentei diversos desafios especialmente com o Flask, o que me levou a uma arquitetura híbrida: o Flask cuida apenas da página do carrinho, enquanto o restante do site é gerenciado pelo Node.js com Express.
+
+Durante o desenvolvimento aprendi lições importantes, como a diferença entre localhost e um link público, problemas de caminhos e redirecionamento entre serviços, e como integrar tecnologias diferentes num mesmo projeto.
+
+O design foi criado pela minha colega Ágatha, enquanto eu fiquei responsável por toda a programação. Tenho muito orgulho desse projeto especialmente por funcionar tanto no computador quanto no celular, como você pode ver nas fotos abaixo.
+
+
+## Tecnologias
+- HTML, CSS, JS (Front-end)
+- Node.js + Express (Back-end)
+- Python + Flask (Carrinho)
+
+---
+## Telas no PC
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+
+## Telas no Celular
+
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+![screenshot da home](telasIMG/homeBonate.png)
+![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+
+---
+## 🚀 Como fazer o Deploy
 
 Este projeto tem 3 partes. Cada uma vai em um serviço diferente:
 
