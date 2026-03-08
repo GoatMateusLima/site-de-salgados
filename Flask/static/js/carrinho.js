@@ -146,11 +146,11 @@ async function alterarQuantidade(idProduto, delta) {
 
 // Funções de navegação
 function voltarParaIndex() {
-  window.location.href = `${window.location.protocol}//${window.location.hostname}/index.html`;
+  window.location.href = "https://site-de-salgados-node.onrender.com";
 }
 
 function sobre() {
-  window.location.href = `${window.location.protocol}//${window.location.hostname}/sobre.html`;
+  window.location.href = "https://site-de-salgados-node.onrender.com/sobre.html";
 }
 
 // Inicia todos os event listeners
