@@ -2,7 +2,8 @@ const FLASK_URL = "https://site-de-salgados-flask-qaql.onrender.com";
 const NODE_URL = "https://site-de-salgados-node.onrender.com";
 
 // Botão carrinho do header
-document.getElementById("btn-carrinho").addEventListener("click", () => {
+const btnCarrinhoo = document.getElementById("btn-carrinho");
+btnCarrinhoo.addEventListener("click", () => {
   const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
   if (!usuario) {
     window.location.href = "/form.html";
