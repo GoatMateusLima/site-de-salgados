@@ -32,14 +32,16 @@ O design foi criado pela minha colega Ágatha, enquanto eu fiquei responsável p
 
 ## Telas no Celular
 
-![screenshot da home](telasIMG/homeBonate.png)
-![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+![screenshot da home](telasIMG/HomeMobile.jpg)
+![screenshot do carrinho](telasIMG/CarrinhoMobile.jpg)
 
-![screenshot da home](telasIMG/homeBonate.png)
-![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+![screenshot da home](telasIMG/cadastroMobile.jpg)
+![screenshot do carrinho](telasIMG/loginMobile.jpg)
 
-![screenshot da home](telasIMG/homeBonate.png)
-![screenshot do carrinho](telasIMG/CarrinhoBonate.png)
+![screenshot da home](telasIMG/ProdutosMobile.jpg)
+![screenshot do carrinho](telasIMG/SaibaMaisProdutoMobile.jpg)
+
+![screenshot do carrinho](telasIMG/menuMobile.jpg)
 
 ---
 ## 🚀 Como fazer o Deploy
