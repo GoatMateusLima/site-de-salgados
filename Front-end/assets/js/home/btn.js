@@ -108,3 +108,5 @@ btnExcluirConta.addEventListener("click", async () => {
     alert("❌ Erro ao excluir conta. Tente novamente mais tarde.");
   }
 });
+
+
