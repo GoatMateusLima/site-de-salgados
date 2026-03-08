@@ -9,9 +9,10 @@ const PORT = 8080;
 // Caminhos
 const BASE_DIR = __dirname;
 const FRONTEND_DIR = path.join(BASE_DIR, "../Front-end");
-const DB_DIR = path.join(BASE_DIR, "Banco-de-dados");
-const IMG_DIR = path.join(DB_DIR, "img", "img-salgados");
-const IMG_GERAL_DIR = path.join(DB_DIR, "img");
+const DB_DIR = path.join(BASE_DIR);
+const IMG_DIR = path.join(BASE_DIR, "img", "img-salgados");
+const IMG_GERAL_DIR = path.join(BASE_DIR, "img");
+
 
 // Verifica se front-end existe
 if (!fs.existsSync(FRONTEND_DIR)) {
